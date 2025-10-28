@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <title>스프레드시트 뷰어 (1분 새로고침)</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe id="sheetFrame"
+      src="https://docs.google.com/spreadsheets/d/1ELGd0SQnMaR3M5L1tcmrA3iQi37eiWuxXEs4l7qnS-0/preview#gid=0"
+      allowfullscreen>
+    </iframe>
+
+    <script>
+      const frame = document.getElementById('sheetFrame');
+      const refreshInterval = 60 * 1000; // 1분(60초)
+      setInterval(() => {
+        const baseUrl = "https://docs.google.com/spreadsheets/d/1ELGd0SQnMaR3M5L1tcmrA3iQi37eiWuxXEs4l7qnS-0/preview#gid=0";
+        frame.src = baseUrl + "&t=" + Date.now();
+      }, refreshInterval);
+    </script>
+  </body>
+</html>
